@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.setPadding
 import com.yearly.calendar.R
 import com.yearly.calendar.databinding.CustomCalendarBinding
-import com.yearly.calendar.databinding.ExampleBinding
 
 /**
  * Custom yearly calendar to choose a date range by month
@@ -22,9 +22,6 @@ class YearlyCalendar @JvmOverloads constructor(
 
     private var _headerBinding: CustomCalendarBinding? = null
     private val headerBinding get() = _headerBinding!!
-
-    private var _exampleBinding: ExampleBinding? = null
-    private val exampleBinding get() = _exampleBinding!!
 
     private var headerTitle: Int = 2022 // todo: set current year by default later
 
@@ -40,7 +37,9 @@ class YearlyCalendar @JvmOverloads constructor(
 
     private fun checkAttributes(attrs: AttributeSet?, defStyleAttr: Int) {
         context.withStyledAttributes(attrs, R.styleable.YearlyCalendar, defStyleAttr) {
-            setHeaderIcon(getResourceId(R.styleable.YearlyCalendar_arrowIcon, R.drawable.ic_arrow))
+            setArrowsIcon(getResourceId(R.styleable.YearlyCalendar_arrowIcon, R.drawable.ic_arrow))
+            setArrowsPadding(getDimensionPixelOffset(R.styleable.YearlyCalendar_arrowsPadding, 0))
+            setArrowsBackground(getResourceId(R.styleable.YearlyCalendar_arrowsBackground, R.drawable.bg_arrow))
         }
     }
 
@@ -48,17 +47,14 @@ class YearlyCalendar @JvmOverloads constructor(
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         _headerBinding = CustomCalendarBinding.inflate(inflater)
-        _exampleBinding = ExampleBinding.inflate(inflater)
     }
 
     private fun setLayoutParams() {
-        exampleBinding.exampleLayout.layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         headerBinding.header.layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
     }
 
     private fun addViews() {
         addView(headerBinding.root)
-//        addView(exampleBinding.root)
     }
 
     // todo: fix the child's relative location
@@ -110,17 +106,25 @@ class YearlyCalendar @JvmOverloads constructor(
             resolveSizeAndState(maxWidth, widthMeasureSpec, 0),
             resolveSizeAndState(maxHeight, heightMeasureSpec, 0)
         )
-
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     /**
      * Set the icon with the direction to the right.
      * The left icon is automatically rotated.
      */
-    override fun setHeaderIcon(drawable: Int) {
+    override fun setArrowsIcon(drawable: Int) {
         headerBinding.buttonPrevious.setImageDrawable(ContextCompat.getDrawable(context, drawable))
         headerBinding.buttonNext.setImageDrawable(ContextCompat.getDrawable(context, drawable))
+    }
+
+    override fun setArrowsBackground(drawable: Int) {
+        headerBinding.buttonPrevious.setBackgroundResource(drawable)
+        headerBinding.buttonNext.setBackgroundResource(drawable)
+    }
+
+    override fun setArrowsPadding(padding: Int) {
+        headerBinding.buttonPrevious.setPadding(padding)
+        headerBinding.buttonNext.setPadding(padding)
     }
 
     private fun initHeader() {
@@ -144,7 +148,6 @@ class YearlyCalendar @JvmOverloads constructor(
 
     override fun clear() {
         _headerBinding = null
-        _exampleBinding = null
     }
 
     private companion object {

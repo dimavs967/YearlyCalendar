@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="YearlyCalendar">
         <attr name="arrowIcon" format="reference" />
+        <attr name="arrowsPadding" format="dimension" />
+        <attr name="arrowsBackground" format="reference" />
     </declare-styleable>
 </resources>
