@@ -1,8 +1,9 @@
 package com.yearly.calendar.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.yearly.calendar.databinding.ActivityMainBinding
+import com.yearly.calendar.utils.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,13 +15,12 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initListeners()
-    }
+        val cal = binding.calendarView.getCalendarProperties()
 
-    private fun initListeners() {
-        binding.buttonSet.setOnClickListener {
-
+        cal.clickListener = {
+            this.toast("Start: ${it.startDate} / End: ${it.endDate} ")
         }
+
     }
 
     override fun onDestroy() {
@@ -28,5 +28,4 @@ class MainActivity : AppCompatActivity() {
         _binding = null
         super.onDestroy()
     }
-
 }
