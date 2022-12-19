@@ -12,16 +12,16 @@ class CalendarPagerAdapter(
     private val properties: CalendarProperties
 ) : PagerAdapter() {
 
-    override fun getCount(): Int = Int.MAX_VALUE / 2
+    override fun getCount(): Int = Int.MAX_VALUE
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val gridAdapter = GridAdapter(container.context, properties)
 
         return LayoutInflater.from(container.context)
             .inflate(R.layout.calendar_view, container, false).also {
-            it.findViewById<GridView>(R.id.months_grid).adapter = gridAdapter
-            container.addView(it)
-        }
+                it.findViewById<GridView>(R.id.months_grid).adapter = gridAdapter
+                container.addView(it)
+            }
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = view === `object`

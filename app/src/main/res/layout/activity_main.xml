@@ -10,7 +10,7 @@
 <!--    <com.yearly.calendar.ui.calendar.YearlyCalendar-->
 <!--        android:id="@+id/calendar_view"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="150dp"-->
+<!--        android:layout_height="wrap_content"-->
 <!--        android:paddingHorizontal="12dp"-->
 <!--        app:arrowsBackground="@drawable/bg_arrow"-->
 <!--        app:arrowsPadding="4dp"-->

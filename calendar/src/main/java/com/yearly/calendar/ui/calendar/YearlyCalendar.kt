@@ -114,11 +114,11 @@ class YearlyCalendar @JvmOverloads constructor(
         viewPager?.id = generateViewId()
 
         viewPager?.adapter = pagerAdapter
-        viewPager?.offscreenPageLimit = OFFSCREEN_LIMIT
-        viewPager?.currentItem = OFFSCREEN_LIMIT
+
+        viewPager?.offscreenPageLimit = properties.offscreenLimit
+        viewPager?.currentItem = properties.offscreenLimit
         viewPager?.setPadding(0, 20, 0, 0)
         viewPager?.setPagingEnabled(false)
-//        viewPager?.addOnPageChangeListener(pageChangeListener)
 
         viewPager?.layoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT).also {
             it.topMargin = headerBinding.root.layoutParams.height
@@ -127,7 +127,6 @@ class YearlyCalendar @JvmOverloads constructor(
 
     // ViewGroup methods
 
-    // todo: refactor later
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         var x = paddingLeft + (headerChild?.marginLeft ?: 0)
         var y = paddingTop + (headerChild?.marginTop ?: 0)
@@ -140,7 +139,7 @@ class YearlyCalendar @JvmOverloads constructor(
         )
 
         x = paddingLeft + (calendarChild?.marginLeft ?: 0)
-        y = paddingTop + (headerChild?.height ?: 0) //
+        y = paddingTop + (headerChild?.height ?: 0)
 
         calendarChild?.layout(
             x,
@@ -150,12 +149,11 @@ class YearlyCalendar @JvmOverloads constructor(
         )
     }
 
-    // todo: refactor later
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var maxHeight = 0
         var maxWidth = 0
 
-//        // Find out how big everyone wants to be
+        // Find out how big everyone wants to be
         measureChildren(widthMeasureSpec, heightMeasureSpec)
 
         for (i in 0 until childCount) {
@@ -181,32 +179,7 @@ class YearlyCalendar @JvmOverloads constructor(
             resolveSizeAndState(maxWidth, widthMeasureSpec, 0),
             resolveSizeAndState(maxHeight, heightMeasureSpec, 0)
         )
-
-        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE shr 2, MeasureSpec.AT_MOST))
     }
-
-//    private fun clampSize(size: Int, spec: Int): Int {
-//        val specMode = MeasureSpec.getMode(spec)
-//        val specSize = MeasureSpec.getSize(spec)
-//        return when (specMode) {
-//            MeasureSpec.EXACTLY -> specSize
-//            MeasureSpec.AT_MOST -> size.coerceAtMost(specSize)
-//            MeasureSpec.UNSPECIFIED -> size
-//            else -> size
-//        }
-//    }
-
-    // todo: setup later
-//    private val pageChangeListener = object : ViewPager.OnPageChangeListener {
-//        override fun onPageScrolled(
-//            position: Int,
-//            positionOffset: Float,
-//            positionOffsetPixels: Int
-//        ) { Log.d(TAG, "Position: $position") }
-//
-//        override fun onPageSelected(position: Int) {}
-//        override fun onPageScrollStateChanged(state: Int) {}
-//    }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
@@ -220,11 +193,8 @@ class YearlyCalendar @JvmOverloads constructor(
     }
 
     private companion object {
-        const val TAG = "CalendarView"
         const val MATCH_PARENT = LayoutParams.MATCH_PARENT
         const val WRAP_CONTENT = LayoutParams.WRAP_CONTENT
-
-        const val OFFSCREEN_LIMIT = 100
     }
 
 }
