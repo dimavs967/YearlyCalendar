@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="YearlyCalendar">
+        <attr name="arrowIcon" format="reference" />
+        <attr name="arrowsPadding" format="dimension" />
+        <attr name="arrowsBackground" format="reference" />
+    </declare-styleable>
+</resources>
