@@ -7,15 +7,15 @@
     android:background="#F8F8F8"
     tools:context=".ui.main.MainActivity">
 
-    <com.yearly.calendar.ui.calendar.YearlyCalendar
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:paddingHorizontal="12dp"
-        app:arrowsBackground="@drawable/bg_arrow"
-        app:arrowsPadding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <com.yearly.calendar.ui.calendar.YearlyCalendar-->
+<!--        android:id="@+id/calendar_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:paddingHorizontal="12dp"-->
+<!--        app:arrowsBackground="@drawable/bg_arrow"-->
+<!--        app:arrowsPadding="4dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
