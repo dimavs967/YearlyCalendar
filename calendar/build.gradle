@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 31
 
     defaultConfig {
-        minSdk 23
-        targetSdk 33
+        minSdk 21
+        targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -35,7 +35,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.6.1'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     testImplementation 'junit:junit:4.13.2'
@@ -45,65 +45,21 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
 
-//afterEvaluate {
 publishing {
-//        register<MavenPublication>("release") {
-//            groupId = "demo-simple-android-lib"
-//            artifactId = "demo-simple-android-lib"
-//            version = "0.0.3"
-//
-//            afterEvaluate {
-//                from(components["release"])
-//            }
-//        }
-
     publications {
         release(MavenPublication) {
             groupId = "com.github.dimavs967"
             artifactId = "YearlyCalendar"
             version = "0.0.1"
             afterEvaluate {
-
                 from components.release
             }
         }
-//        debug(MavenPublication) {
-//            groupId = "com.github.dimavs967"
-//            artifactId = "YearlyCalendar"
-//            version = "0.0.1"
-//
-//            afterEvaluate {
-//
-//                from components.debug
-//            }
-//        }
     }
-    // note repositories goes under publishing
+
     repositories {
         maven {
             url = uri("${project.buildDir}/check")
         }
     }
 }
-//}
-
-//publishing {
-//    publications {
-//        create<MavenPublication>("maven") {
-//            groupId = "com.github.dimavs967"
-//            artifactId = "YearlyCalendar"
-//            version = "0.0.1"
-//
-//            from(components["java"])
-//        }
-////            register<MavenPublication>("release") {
-////                groupId = "com.github.dimavs967"
-////                artifactId = "YearlyCalendar"
-////                version = "0.0.1"
-////
-////                afterEvaluate {
-////                    from(components["release"])
-////                }
-////            }
-//    }
-//}
