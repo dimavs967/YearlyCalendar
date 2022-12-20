@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="material_calendar_months_array">
+    <array name="material_yearly_calendar_months_array">
         <item>January</item>
         <item>February</item>
         <item>March</item>

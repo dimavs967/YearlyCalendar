@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:id="@+id/month"
+        android:id="@+id/yearly_calendar_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_month"
+        android:background="@drawable/bg_month_default"
         android:padding="4dp"
         android:text="Example"
         android:textAlignment="center"

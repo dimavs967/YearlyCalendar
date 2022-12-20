@@ -50,7 +50,7 @@ class YearlyCalendar @JvmOverloads constructor(
     // Check XML attributes
     private fun checkAttributes(attrs: AttributeSet?, defStyleAttr: Int) {
         context.withStyledAttributes(attrs, R.styleable.YearlyCalendar, defStyleAttr) {
-            setArrowsIcon(getResourceId(R.styleable.YearlyCalendar_arrowIcon, R.drawable.ic_arrow))
+            setArrowsIcon(getResourceId(R.styleable.YearlyCalendar_arrowIcon, R.drawable.ic_yearly_calendar_arrow))
             setArrowsPadding(getDimensionPixelOffset(R.styleable.YearlyCalendar_arrowsPadding, 0))
             setArrowsBackground(getResourceId(R.styleable.YearlyCalendar_arrowsBackground, R.drawable.bg_arrow))
         }
@@ -69,7 +69,7 @@ class YearlyCalendar @JvmOverloads constructor(
     }
 
     private fun setLayoutParams() {
-        headerBinding.header.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        headerBinding.calendarHeader.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
     }
 
     // Header methods
@@ -83,7 +83,7 @@ class YearlyCalendar @JvmOverloads constructor(
             headerBinding.year.text = properties.year.toString()
         }
 
-        headerBinding.buttonNext.setOnClickListener {
+        headerBinding.buttonForward.setOnClickListener {
             properties.year += 1
             viewPager?.currentItem = viewPager?.currentItem?.plus(1) ?: 0
             headerBinding.year.text = properties.year.toString()
@@ -92,17 +92,17 @@ class YearlyCalendar @JvmOverloads constructor(
 
     override fun setArrowsIcon(drawable: Int) {
         headerBinding.buttonPrevious.setImageDrawable(ContextCompat.getDrawable(context, drawable))
-        headerBinding.buttonNext.setImageDrawable(ContextCompat.getDrawable(context, drawable))
+        headerBinding.buttonForward.setImageDrawable(ContextCompat.getDrawable(context, drawable))
     }
 
     override fun setArrowsBackground(drawable: Int) {
         headerBinding.buttonPrevious.setBackgroundResource(drawable)
-        headerBinding.buttonNext.setBackgroundResource(drawable)
+        headerBinding.buttonForward.setBackgroundResource(drawable)
     }
 
     override fun setArrowsPadding(padding: Int) {
         headerBinding.buttonPrevious.setPadding(padding)
-        headerBinding.buttonNext.setPadding(padding)
+        headerBinding.buttonForward.setPadding(padding)
     }
 
     // Calendar viewPager methods

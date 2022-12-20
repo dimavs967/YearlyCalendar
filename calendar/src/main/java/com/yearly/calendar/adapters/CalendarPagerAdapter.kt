@@ -19,7 +19,7 @@ class CalendarPagerAdapter(
 
         return LayoutInflater.from(container.context)
             .inflate(R.layout.calendar_view, container, false).also {
-                it.findViewById<GridView>(R.id.months_grid).adapter = gridAdapter
+                it.findViewById<GridView>(R.id.calendar_months_grid).adapter = gridAdapter
                 container.addView(it)
             }
     }
