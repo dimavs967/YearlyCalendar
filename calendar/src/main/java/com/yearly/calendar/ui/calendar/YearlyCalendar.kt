@@ -69,7 +69,7 @@ class YearlyCalendar @JvmOverloads constructor(
     }
 
     private fun setLayoutParams() {
-        headerBinding.calendarHeader.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        headerBinding.header.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
     }
 
     // Header methods
