@@ -80,7 +80,7 @@ class CalendarProperties(
 
 
     fun getMonths(): Array<out String> {
-        return context.resources.getStringArray(R.array.material_calendar_months_array)
+        return context.resources.getStringArray(R.array.material_yearly_calendar_months_array)
     }
 
     fun getColor(color: Int): Int = ContextCompat.getColor(context, color)
