@@ -2,6 +2,7 @@ package com.yearly.calendar.utils
 
 import android.content.Context
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import com.yearly.calendar.R
 import com.yearly.calendar.listeners.OnItemClickListener
 import com.yearly.calendar.listeners.OnMonthSelectListener
@@ -9,7 +10,7 @@ import com.yearly.calendar.models.MonthModel
 import com.yearly.calendar.models.Range
 
 class CalendarProperties(
-    context: Context
+    private val context: Context
 ) {
 
     var offscreenLimit = 20
@@ -25,7 +26,7 @@ class CalendarProperties(
     var endIndex: Int? = null
 
     init {
-        context.getMonths().forEach { months.add(MonthModel(0, it, false)) }
+        getMonths().forEach { months.add(MonthModel(0, it, false)) }
     }
 
     var clickListener: OnMonthSelectListener? = null
@@ -76,6 +77,13 @@ class CalendarProperties(
             )
         }
     }
+
+
+    fun getMonths(): Array<out String> {
+        return context.resources.getStringArray(R.array.material_calendar_months_array)
+    }
+
+    fun getColor(color: Int): Int = ContextCompat.getColor(context, color)
 
     fun clearRange() {
         startIndex = null
