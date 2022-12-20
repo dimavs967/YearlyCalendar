@@ -48,7 +48,8 @@ publishing {
         release(MavenPublication) {
             groupId = "com.github.dimavs967"
             artifactId = "YearlyCalendar"
-            version = "0.0.1.8"
+            version = "0.0.1.9"
+
             afterEvaluate {
                 from components.release
             }
