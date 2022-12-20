@@ -31,7 +31,7 @@ class GridAdapter(
                 false
             )
 
-        item.findViewById<TextView>(R.id.yearly_calendar_month).let {
+        item.findViewById<TextView>(R.id.calendar_month).let {
             getItem(position).position = position
             it.text = getItem(position).month
             it.setPadding(0, 16, 0, 16)

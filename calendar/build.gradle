@@ -50,10 +50,10 @@ afterEvaluate {
 
                 groupId = "com.github.dimavs967"
                 artifactId = "YearlyCalendar"
-                version = "0.0.1.13"
+                version = "0.0.1.16"
 
-                from components.release
 //            afterEvaluate {
+                from components.release
             }
         }
     }
