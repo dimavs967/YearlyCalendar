@@ -71,7 +71,7 @@ class CalendarProperties(
             clickListener?.invoke(
                 Range(
                     "${months[startIndex!!].month}, $year",
-                    "${months[endIndex!!].month}, $year}"
+                    "${months[endIndex!!].month}, $year"
                 )
             )
         }
