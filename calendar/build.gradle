@@ -47,12 +47,12 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.release
 
                 groupId = "com.github.dimavs967"
                 artifactId = "YearlyCalendar"
-                version = "0.0.1.11"
+                version = "0.0.1.12"
 
+                from components.release
 //            afterEvaluate {
             }
         }
