@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.yearly.calendar.R
 import com.yearly.calendar.models.MonthModel
 import com.yearly.calendar.utils.CalendarProperties
-import com.yearly.calendar.utils.color
 
 class GridAdapter(
     private val context: Context,
@@ -41,7 +40,7 @@ class GridAdapter(
                 it.setBackgroundResource(properties.itemSelected)
 
             if (properties.months[position].rangeEdge == true) {
-                it.setTextColor(context.color(R.color.white))
+                it.setTextColor(properties.getColor(R.color.white))
                 it.setBackgroundResource(properties.itemSelectedEdge)
             }
 
